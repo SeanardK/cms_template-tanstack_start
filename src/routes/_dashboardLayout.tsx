@@ -2,12 +2,15 @@ import { AppShell, Button, Flex, Menu } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 import Navbar from "@/components/navbar";
+import usePrivateRoute from "@/helper/usePrivateRoute";
 
 export const Route = createFileRoute("/_dashboardLayout")({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
+	usePrivateRoute();
+
 	const [opened, { toggle }] = useDisclosure();
 
 	return (
