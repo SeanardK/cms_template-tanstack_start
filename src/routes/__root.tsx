@@ -22,6 +22,7 @@ import "@mantine/tiptap/styles.css";
 
 import type { QueryClient } from "@tanstack/react-query";
 import keycloak from "@/config/keycloack";
+import NotFoundComponent from "@/pages/NotFound";
 import { theme } from "@/theme";
 
 interface MyRouterContext {
@@ -29,6 +30,8 @@ interface MyRouterContext {
 }
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
+	shellComponent: RootDocument,
+	notFoundComponent: () => <NotFoundComponent />,
 	head: () => ({
 		meta: [
 			{
@@ -49,8 +52,6 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 			},
 		],
 	}),
-
-	shellComponent: RootDocument,
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {

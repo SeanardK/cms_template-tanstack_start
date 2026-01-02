@@ -100,7 +100,9 @@ function Navbar() {
 
 			<Button
 				onClick={() =>
-					keycloak.logout({ redirectUri: "http://localhost:3000" })
+					keycloak.logout({
+						redirectUri: import.meta.env.VITE_KEYCLOAK_LOGOUT_REDIRECT_URL,
+					})
 				}
 				fullWidth
 			>

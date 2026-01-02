@@ -41,15 +41,21 @@ function PageHeader({
 
 	return (
 		<Flex
+			direction={{ base: "column", md: "row" }}
 			justify={"space-between"}
 			align={"center"}
-			className="sticky top-0 pt-4 pb-1 border-b z-10 mb-4 bg-(--mantine-color-body)"
+			className="sticky top-0 py-4 pb-1 border-b z-10 mb-4 bg-(--mantine-color-body)"
 		>
 			<Title order={1} className="text-2xl font-bold">
 				{title}
 			</Title>
 
-			<Flex gap={"sm"} justify={"flex-end"} align={"center"}>
+			<Flex
+				direction={{ base: "column", md: "row" }}
+				gap={"sm"}
+				justify={"flex-end"}
+				align={"center"}
+			>
 				{showSearch && (
 					<Input
 						value={search}
@@ -61,15 +67,17 @@ function PageHeader({
 						}}
 					/>
 				)}
-				{showFilter && <Button leftSection={<ListFilter />}>Filter</Button>}
+				<Flex gap={"sm"}>
+					{showFilter && <Button leftSection={<ListFilter />}>Filter</Button>}
 
-				{showAdd && (
-					<Button leftSection={<Plus />} onClick={onAddClick}>
-						Add {title}
-					</Button>
-				)}
+					{showAdd && (
+						<Button leftSection={<Plus />} onClick={onAddClick}>
+							Add {title}
+						</Button>
+					)}
 
-				{rightSection}
+					{rightSection}
+				</Flex>
 			</Flex>
 		</Flex>
 	);

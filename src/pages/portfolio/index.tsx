@@ -13,6 +13,22 @@ const data = [
 		url: "https://seanard.vercel.app",
 		repository: "https://github.com/SeanardK",
 	},
+	{
+		title: "Seanard",
+		description: "Description",
+		framework: ["NextJS"],
+		libraries: ["MantineUI"],
+		url: "https://seanard.vercel.app",
+		repository: "https://github.com/SeanardK",
+	},
+	{
+		title: "Seanard",
+		description: "Description",
+		framework: ["NextJS"],
+		libraries: ["MantineUI"],
+		url: "https://seanard.vercel.app",
+		repository: "https://github.com/SeanardK",
+	},
 ];
 
 function PagePortfolioIndex() {
@@ -26,7 +42,13 @@ function PagePortfolioIndex() {
 
 			<Grid>
 				{data.map((item) => (
-					<Grid.Col span={3} key={item.title}>
+					<Grid.Col
+						span={{
+							xs: 12,
+							md: 3,
+						}}
+						key={item.title}
+					>
 						<ProjectCard
 							title={item.title}
 							description={item.description}
