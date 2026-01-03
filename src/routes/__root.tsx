@@ -1,5 +1,6 @@
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
+import { ReactKeycloakProvider } from "@react-keycloak/web";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import {
 	createRootRouteWithContext,
@@ -20,6 +21,8 @@ import "@mantine/notifications/styles.css";
 import "@mantine/tiptap/styles.css";
 
 import type { QueryClient } from "@tanstack/react-query";
+import keycloak from "@/config/keycloack";
+import NotFoundComponent from "@/pages/NotFound";
 import { theme } from "@/theme";
 
 interface MyRouterContext {
@@ -27,6 +30,8 @@ interface MyRouterContext {
 }
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
+	shellComponent: RootDocument,
+	notFoundComponent: () => <NotFoundComponent />,
 	head: () => ({
 		meta: [
 			{
@@ -47,8 +52,6 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 			},
 		],
 	}),
-
-	shellComponent: RootDocument,
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
@@ -59,26 +62,28 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 				<ColorSchemeScript />
 			</head>
 			<body>
-				<MantineProvider theme={theme}>
-					<Notifications position="top-right" />
+				<ReactKeycloakProvider authClient={keycloak}>
+					<MantineProvider theme={theme}>
+						<Notifications position="top-right" />
 
-					<NuqsAdapter>{children}</NuqsAdapter>
+						<NuqsAdapter>{children}</NuqsAdapter>
 
-					<TanStackDevtools
-						config={{
-							position: "bottom-right",
-						}}
-						plugins={[
-							{
-								name: "Tanstack Router",
-								render: <TanStackRouterDevtoolsPanel />,
-							},
-							TanStackQueryDevtools,
-							StoreDevtools,
-							AiDevtools,
-						]}
-					/>
-				</MantineProvider>
+						<TanStackDevtools
+							config={{
+								position: "bottom-right",
+							}}
+							plugins={[
+								{
+									name: "Tanstack Router",
+									render: <TanStackRouterDevtoolsPanel />,
+								},
+								TanStackQueryDevtools,
+								StoreDevtools,
+								AiDevtools,
+							]}
+						/>
+					</MantineProvider>
+				</ReactKeycloakProvider>
 				<Scripts />
 			</body>
 		</html>
