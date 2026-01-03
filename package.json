@@ -51,6 +51,7 @@
     "@tiptap/react": "^3.14.0",
     "@tiptap/starter-kit": "^3.14.0",
     "@types/lodash": "^4.17.21",
+    "axios": "^1.13.2",
     "highlight.js": "^11.11.1",
     "html-react-parser": "^5.2.11",
     "keycloak-js": "^26.2.2",

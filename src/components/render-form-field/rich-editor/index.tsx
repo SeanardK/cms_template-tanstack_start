@@ -1,3 +1,4 @@
+import type { UseFormReturnType } from "@mantine/form";
 import { Link, RichTextEditor } from "@mantine/tiptap";
 import Highlight from "@tiptap/extension-highlight";
 import SubScript from "@tiptap/extension-subscript";
@@ -5,9 +6,10 @@ import Superscript from "@tiptap/extension-superscript";
 import TextAlign from "@tiptap/extension-text-align";
 import { useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import { useEffect } from "react";
 
 type RichEditorProps = {
-	form?: any;
+	form: ReturnType<UseFormReturnType<any>["getInputProps"]>;
 };
 
 function RichEditor({ form }: RichEditorProps) {
@@ -21,11 +23,23 @@ function RichEditor({ form }: RichEditorProps) {
 			Highlight,
 			TextAlign.configure({ types: ["heading", "paragraph"] }),
 		],
-		content: form.value,
+		content: form.defaultValue || form.value,
 		onUpdate: ({ editor }) => {
 			form.onChange(editor.getHTML());
 		},
+		immediatelyRender: false,
 	});
+
+	useEffect(() => {
+		if (editor && (form.defaultValue || form.value)) {
+			const currentContent = editor.getHTML();
+			const newContent = form.defaultValue || form.value;
+
+			if (currentContent !== newContent) {
+				editor.commands.setContent(newContent);
+			}
+		}
+	}, [editor, form.defaultValue, form.value]);
 
 	return (
 		<RichTextEditor editor={editor}>
