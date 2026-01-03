@@ -28,6 +28,7 @@ import { Route as TutorialDemoFormAddressRouteImport } from './routes/tutorial/d
 import { Route as TutorialDemoApiTqTodosRouteImport } from './routes/tutorial/demo/api.tq-todos'
 import { Route as TutorialDemoApiTanchatRouteImport } from './routes/tutorial/demo/api.tanchat'
 import { Route as TutorialDemoApiNamesRouteImport } from './routes/tutorial/demo/api.names'
+import { Route as DashboardLayoutPortfolioEditIdRouteImport } from './routes/_dashboardLayout/portfolio/edit/$id'
 import { Route as TutorialDemoStartSsrIndexRouteImport } from './routes/tutorial/demo/start.ssr.index'
 import { Route as TutorialDemoStartSsrSpaModeRouteImport } from './routes/tutorial/demo/start.ssr.spa-mode'
 import { Route as TutorialDemoStartSsrFullSsrRouteImport } from './routes/tutorial/demo/start.ssr.full-ssr'
@@ -134,6 +135,12 @@ const TutorialDemoApiNamesRoute = TutorialDemoApiNamesRouteImport.update({
   path: '/tutorial/demo/api/names',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardLayoutPortfolioEditIdRoute =
+  DashboardLayoutPortfolioEditIdRouteImport.update({
+    id: '/portfolio/edit/$id',
+    path: '/portfolio/edit/$id',
+    getParentRoute: () => DashboardLayoutRoute,
+  } as any)
 const TutorialDemoStartSsrIndexRoute =
   TutorialDemoStartSsrIndexRouteImport.update({
     id: '/tutorial/demo/start/ssr/',
@@ -168,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/tutorial/demo/tanchat': typeof TutorialDemoTanchatRoute
   '/tutorial/demo/tanstack-query': typeof TutorialDemoTanstackQueryRoute
   '/portfolio': typeof DashboardLayoutPortfolioIndexRoute
+  '/portfolio/edit/$id': typeof DashboardLayoutPortfolioEditIdRoute
   '/tutorial/demo/api/names': typeof TutorialDemoApiNamesRoute
   '/tutorial/demo/api/tanchat': typeof TutorialDemoApiTanchatRoute
   '/tutorial/demo/api/tq-todos': typeof TutorialDemoApiTqTodosRoute
@@ -192,6 +200,7 @@ export interface FileRoutesByTo {
   '/tutorial/demo/tanchat': typeof TutorialDemoTanchatRoute
   '/tutorial/demo/tanstack-query': typeof TutorialDemoTanstackQueryRoute
   '/portfolio': typeof DashboardLayoutPortfolioIndexRoute
+  '/portfolio/edit/$id': typeof DashboardLayoutPortfolioEditIdRoute
   '/tutorial/demo/api/names': typeof TutorialDemoApiNamesRoute
   '/tutorial/demo/api/tanchat': typeof TutorialDemoApiTanchatRoute
   '/tutorial/demo/api/tq-todos': typeof TutorialDemoApiTqTodosRoute
@@ -218,6 +227,7 @@ export interface FileRoutesById {
   '/tutorial/demo/tanchat': typeof TutorialDemoTanchatRoute
   '/tutorial/demo/tanstack-query': typeof TutorialDemoTanstackQueryRoute
   '/_dashboardLayout/portfolio/': typeof DashboardLayoutPortfolioIndexRoute
+  '/_dashboardLayout/portfolio/edit/$id': typeof DashboardLayoutPortfolioEditIdRoute
   '/tutorial/demo/api/names': typeof TutorialDemoApiNamesRoute
   '/tutorial/demo/api/tanchat': typeof TutorialDemoApiTanchatRoute
   '/tutorial/demo/api/tq-todos': typeof TutorialDemoApiTqTodosRoute
@@ -244,6 +254,7 @@ export interface FileRouteTypes {
     | '/tutorial/demo/tanchat'
     | '/tutorial/demo/tanstack-query'
     | '/portfolio'
+    | '/portfolio/edit/$id'
     | '/tutorial/demo/api/names'
     | '/tutorial/demo/api/tanchat'
     | '/tutorial/demo/api/tq-todos'
@@ -268,6 +279,7 @@ export interface FileRouteTypes {
     | '/tutorial/demo/tanchat'
     | '/tutorial/demo/tanstack-query'
     | '/portfolio'
+    | '/portfolio/edit/$id'
     | '/tutorial/demo/api/names'
     | '/tutorial/demo/api/tanchat'
     | '/tutorial/demo/api/tq-todos'
@@ -293,6 +305,7 @@ export interface FileRouteTypes {
     | '/tutorial/demo/tanchat'
     | '/tutorial/demo/tanstack-query'
     | '/_dashboardLayout/portfolio/'
+    | '/_dashboardLayout/portfolio/edit/$id'
     | '/tutorial/demo/api/names'
     | '/tutorial/demo/api/tanchat'
     | '/tutorial/demo/api/tq-todos'
@@ -468,6 +481,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TutorialDemoApiNamesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_dashboardLayout/portfolio/edit/$id': {
+      id: '/_dashboardLayout/portfolio/edit/$id'
+      path: '/portfolio/edit/$id'
+      fullPath: '/portfolio/edit/$id'
+      preLoaderRoute: typeof DashboardLayoutPortfolioEditIdRouteImport
+      parentRoute: typeof DashboardLayoutRoute
+    }
     '/tutorial/demo/start/ssr/': {
       id: '/tutorial/demo/start/ssr/'
       path: '/tutorial/demo/start/ssr'
@@ -501,11 +521,13 @@ declare module '@tanstack/react-router' {
 
 interface DashboardLayoutRouteChildren {
   DashboardLayoutPortfolioIndexRoute: typeof DashboardLayoutPortfolioIndexRoute
+  DashboardLayoutPortfolioEditIdRoute: typeof DashboardLayoutPortfolioEditIdRoute
   DashboardLayoutPortfolioAddIndexRoute: typeof DashboardLayoutPortfolioAddIndexRoute
 }
 
 const DashboardLayoutRouteChildren: DashboardLayoutRouteChildren = {
   DashboardLayoutPortfolioIndexRoute: DashboardLayoutPortfolioIndexRoute,
+  DashboardLayoutPortfolioEditIdRoute: DashboardLayoutPortfolioEditIdRoute,
   DashboardLayoutPortfolioAddIndexRoute: DashboardLayoutPortfolioAddIndexRoute,
 }
 

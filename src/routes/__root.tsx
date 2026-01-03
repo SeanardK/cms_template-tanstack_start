@@ -64,7 +64,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 			<body>
 				<ReactKeycloakProvider authClient={keycloak}>
 					<MantineProvider theme={theme}>
-						<Notifications position="top-right" />
+						<Notifications position="bottom-right" />
 
 						<NuqsAdapter>{children}</NuqsAdapter>
 

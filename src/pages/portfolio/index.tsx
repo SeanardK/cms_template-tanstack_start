@@ -1,37 +1,15 @@
 import { Grid } from "@mantine/core";
 import { useNavigate } from "@tanstack/react-router";
-import { useQueryStates } from "nuqs";
+import { useEffect } from "react";
 import PageHeader from "@/components/page-header";
 import { ProjectCard } from "@/components/portfolio-card";
+import { usePortfolioGetAllQuery } from "@/query/portfolio";
 
-const data = [
-	{
-		title: "Seanard",
-		description: "Description",
-		framework: ["NextJS"],
-		libraries: ["MantineUI"],
-		url: "https://seanard.vercel.app",
-		repository: "https://github.com/SeanardK",
-	},
-	{
-		title: "Seanard",
-		description: "Description",
-		framework: ["NextJS"],
-		libraries: ["MantineUI"],
-		url: "https://seanard.vercel.app",
-		repository: "https://github.com/SeanardK",
-	},
-	{
-		title: "Seanard",
-		description: "Description",
-		framework: ["NextJS"],
-		libraries: ["MantineUI"],
-		url: "https://seanard.vercel.app",
-		repository: "https://github.com/SeanardK",
-	},
-];
+function PagePortfolioIndex({ initialData }: { initialData: any[] }) {
+	const {
+		data: { data },
+	} = usePortfolioGetAllQuery(initialData);
 
-function PagePortfolioIndex() {
 	const navigate = useNavigate();
 
 	const handleAddProject = () => navigate({ to: "/portfolio/add" });
@@ -41,7 +19,7 @@ function PagePortfolioIndex() {
 			<PageHeader title="Portfolio" onAddClick={handleAddProject} />
 
 			<Grid>
-				{data.map((item) => (
+				{data?.map((item) => (
 					<Grid.Col
 						span={{
 							xs: 12,
@@ -50,12 +28,14 @@ function PagePortfolioIndex() {
 						key={item.title}
 					>
 						<ProjectCard
+							id={item.id}
+							image={item.image}
 							title={item.title}
 							description={item.description}
-							framework={item.framework}
-							libraries={item.libraries}
+							framework={item.framework.split(",")}
+							libraries={item.libraries.split(",")}
 							onClickDetail={() => {}}
-							detail=""
+							detail={item.detail}
 							repository={item.repository}
 							url={item.url}
 						/>
