@@ -1,15 +1,16 @@
 import { FileInput, InputWrapper, Textarea, TextInput } from "@mantine/core";
-import { UseFormReturnType } from "@mantine/form";
+import type { UseFormReturnType } from "@mantine/form";
 import { File } from "lucide-react";
 import ImageInput from "./image-input";
 import RichEditor from "./rich-editor";
 
-type RenderFormFieldProps<T> = {
+type RenderFormFieldProps = {
 	field: any;
-	form: UseFormReturnType<T>;
+	form: UseFormReturnType<any>;
+	aspectRatio?: number;
 };
 
-function RenderFormField<T>({ field, form }: RenderFormFieldProps<T>) {
+function RenderFormField({ field, form, aspectRatio }: RenderFormFieldProps) {
 	return (
 		<InputWrapper key={field.name} label={field.label} mb={4}>
 			{(field.type === "text" || !field.type) && (
@@ -42,7 +43,10 @@ function RenderFormField<T>({ field, form }: RenderFormFieldProps<T>) {
 			{field.type === "image" && (
 				<ImageInput
 					form={form.getInputProps(field.name)}
-					onChange={(file) => form.setFieldValue(field.name, file)}
+					onChange={(file) => {
+						form.setFieldValue(field.name, file);
+					}}
+					aspectRatio={aspectRatio}
 				/>
 			)}
 		</InputWrapper>

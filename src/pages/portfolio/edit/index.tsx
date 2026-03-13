@@ -1,13 +1,16 @@
 import { Button, Flex, Switch } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { notifications } from "@mantine/notifications";
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, useParams } from "@tanstack/react-router";
 import { zod4Resolver } from "mantine-form-zod-resolver";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import z from "zod";
 import PageHeader from "@/components/page-header";
 import RenderFormField from "@/components/render-form-field";
-import { usePortfolioCreateMutation } from "@/query/portfolio";
+import {
+	usePortfolioGetByIdQuery,
+	usePortfolioUpdateMutation,
+} from "@/query/portfolio";
 
 const inputFields = [
 	{
@@ -64,9 +67,13 @@ const inputFields = [
 	},
 ];
 
-function PagePortfolioAdd() {
+function PagePortfolioEdit({ initialData }: { initialData?: any }) {
+	const params = useParams({ from: "/_dashboardLayout/portfolio/edit/$id" });
+
 	const navigate = useNavigate();
-	const createMutation = usePortfolioCreateMutation();
+	const updateMutation = usePortfolioUpdateMutation();
+	const { data: response } = usePortfolioGetByIdQuery(params.id, initialData);
+	const portfolioData = response?.data || null;
 
 	const [redirect, setRedirect] = useState(true);
 
@@ -74,7 +81,6 @@ function PagePortfolioAdd() {
 		title: z.string().min(2),
 		description: z.string().min(5),
 		detail: z.string().optional(),
-		image: z.instanceof(File),
 	});
 
 	const initialValues = inputFields.reduce(
@@ -98,33 +104,51 @@ function PagePortfolioAdd() {
 			}
 		});
 
-		createMutation.mutate(formData, {
-			onSuccess: () => {
-				notifications.show({
-					title: "Success",
-					message: "Portfolio created successfully",
-					color: "green",
-				});
-				form.reset();
+		updateMutation.mutate(
+			{ id: params.id, data: formData },
+			{
+				onSuccess: () => {
+					notifications.show({
+						title: "Success",
+						message: "Portfolio updated successfully",
+						color: "green",
+					});
+					form.reset();
 
-				if (redirect) {
-					navigate({ to: "/portfolio" });
-				}
+					if (redirect) {
+						navigate({ to: "/portfolio" });
+					}
+				},
+				onError: (error) => {
+					notifications.show({
+						title: "Error",
+						message: error.message || "Failed to update portfolio",
+						color: "red",
+					});
+				},
 			},
-			onError: (error) => {
-				notifications.show({
-					title: "Error",
-					message: error.message || "Failed to create portfolio",
-					color: "red",
-				});
-			},
-		});
+		);
 	};
+
+	useEffect(() => {
+		if (portfolioData) {
+			form.setValues({
+				title: portfolioData.title || "",
+				description: portfolioData.description || "",
+				detail: portfolioData.detail || "",
+				framework: portfolioData.framework || "",
+				libraries: portfolioData.libraries || "",
+				repository: portfolioData.repository || "",
+				url: portfolioData.url || "",
+				image: portfolioData.image || "",
+			});
+		}
+	}, [portfolioData, form.setValues]);
 
 	return (
 		<form onSubmit={form.onSubmit(handleSubmit)}>
 			<PageHeader
-				title="Add Portfolio"
+				title="Edit Portfolio"
 				showAdd={false}
 				showSearch={false}
 				showFilter={false}
@@ -138,7 +162,7 @@ function PagePortfolioAdd() {
 						<Button type="button" variant="outline">
 							Cancel
 						</Button>
-						<Button type="submit" loading={createMutation.isPending}>
+						<Button type="submit" loading={updateMutation.isPending}>
 							Submit
 						</Button>
 					</Flex>
@@ -154,4 +178,4 @@ function PagePortfolioAdd() {
 	);
 }
 
-export default PagePortfolioAdd;
+export default PagePortfolioEdit;
