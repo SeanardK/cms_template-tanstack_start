@@ -1,357 +1,379 @@
-Welcome to your new TanStack app! 
 
-# Getting Started
+# CMS Template - TanStack Start
 
-To run this application:
+A production-ready CMS template built with **TanStack Start**, **React 19**, and **Mantine UI**.  
+
+This template provides everything you need to build a modern content management system, from authentication and protected routes to rich text editing and image uploads. Designed with developer experience in mind, it includes type-safe environment variables, component documentation with Storybook, and a clean project structure that scales with your application.
+
+Whether you're building a portfolio manager, blog admin panel, or any content-driven dashboard, this template gives you a solid foundation with best practices baked in.
+
+---
+
+## Quick Start
 
 ```bash
+# Clone the repository
+git clone https://github.com/SeanardK/cms_template-tanstack_start.git
+cd cms_template-tanstack_start
+
+# Copy environment file and configure
+cp .env.example .env
+# Edit .env with your API and Keycloak settings
+
+# Install dependencies and run
 pnpm install
-pnpm start
+pnpm dev
 ```
 
-# Building For Production
+Or using Docker:
+```bash
+docker build -t cms-template .
+docker run -p 3000:3000 --env-file .env cms-template
+```
 
-To build this application for production:
+---
+
+## Features
+
+- **TanStack Start Framework** - Full-stack React framework with Vite and Nitro for SSR
+- **Keycloak Authentication** - Secure OIDC authentication with protected routes
+- **Rich Text Editor** - Tiptap editor with formatting, links, code blocks, and more
+- **Image Upload** - Built-in image handling with preview and validation
+- **Mantine UI Components** - Beautiful, accessible UI components out of the box
+- **Type-Safe Forms** - TanStack Form with Zod validation for robust form handling
+- **Data Fetching** - TanStack Query for efficient server state management
+- **File-Based Routing** - TanStack Router with automatic route generation
+- **Storybook Documentation** - Component library with visual testing
+- **Tailwind CSS Styling** - Utility-first CSS with Mantine integration
+- **Docker Ready** - Production Dockerfile with multi-stage build
+- **Biome Linting** - Fast linting and formatting in one tool
+
+---
+
+## Table of Contents
+
+- [Requirements](#requirements)
+- [Tech Stack](#tech-stack)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Running the Application](#running-the-application)
+- [Project Structure](#project-structure)
+- [Development](#development)
+- [Docker Deployment](#docker-deployment)
+- [Authentication](#authentication)
+- [Storybook](#storybook)
+- [Author](#author)
+
+---
+
+## Requirements
+
+- Node.js 20 or higher
+- pnpm 9+
+- Keycloak Server (for authentication)
+- Docker & Docker Compose (optional, for containerized deployment)
+
+---
+
+## Tech Stack
+
+<table>
+<tr>
+<td><b>Category</b></td>
+<td><b>Technology</b></td>
+</tr>
+<tr>
+<td>Framework</td>
+<td><a href="https://tanstack.com/start">TanStack Start</a> (Vite + Nitro)</td>
+</tr>
+<tr>
+<td>UI Library</td>
+<td><a href="https://mantine.dev/">Mantine v8</a></td>
+</tr>
+<tr>
+<td>Styling</td>
+<td><a href="https://tailwindcss.com/">Tailwind CSS v4</a></td>
+</tr>
+<tr>
+<td>Routing</td>
+<td><a href="https://tanstack.com/router">TanStack Router</a></td>
+</tr>
+<tr>
+<td>Data Fetching</td>
+<td><a href="https://tanstack.com/query">TanStack Query</a></td>
+</tr>
+<tr>
+<td>Forms</td>
+<td><a href="https://tanstack.com/form">TanStack Form</a> + <a href="https://zod.dev/">Zod</a></td>
+</tr>
+<tr>
+<td>Rich Text</td>
+<td><a href="https://tiptap.dev/">Tiptap</a></td>
+</tr>
+<tr>
+<td>Auth</td>
+<td><a href="https://www.keycloak.org/">Keycloak</a></td>
+</tr>
+<tr>
+<td>Icons</td>
+<td><a href="https://tabler.io/icons">Tabler Icons</a></td>
+</tr>
+<tr>
+<td>Testing</td>
+<td><a href="https://vitest.dev/">Vitest</a></td>
+</tr>
+<tr>
+<td>Linting</td>
+<td><a href="https://biomejs.dev/">Biome</a></td>
+</tr>
+</table>
+
+---
+
+## Installation
+
+### Local Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/SeanardK/cms_template-tanstack_start.git
+   cd cms_template-tanstack_start
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pnpm install
+   ```
+
+3. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   Edit `.env` with your configuration (see [Configuration](#configuration))
+
+4. **Run the application**
+   ```bash
+   pnpm dev
+   ```
+
+---
+
+## Configuration
+
+Create a `.env` file in the root directory with the following variables:
+
+```env
+# Application
+VITE_APP_TITLE=CMS Template
+
+# API Server
+SERVER_URL=http://localhost:8080/api
+
+# Keycloak Authentication
+VITE_KEYCLOAK_URL=http://localhost:8180
+VITE_KEYCLOAK_REALM=your-realm
+VITE_KEYCLOAK_CLIENT_ID=your-client-id
+VITE_KEYCLOAK_LOGOUT_REDIRECT_URL=http://localhost:3000
+```
+
+### Environment Variables
+
+| Variable | Description | Required | Default |
+|----------|-------------|----------|---------|
+| `VITE_APP_TITLE` | Application title | No | - |
+| `SERVER_URL` | Backend API server URL | Yes | - |
+| `VITE_KEYCLOAK_URL` | Keycloak server base URL | Yes | - |
+| `VITE_KEYCLOAK_REALM` | Keycloak realm name | Yes | - |
+| `VITE_KEYCLOAK_CLIENT_ID` | Keycloak client ID | Yes | - |
+| `VITE_KEYCLOAK_LOGOUT_REDIRECT_URL` | Redirect URL after logout | Yes | - |
+
+---
+
+## Running the Application
+
+### Development Mode
+
+```bash
+pnpm dev
+```
+
+The application will start on **http://localhost:3000**
+
+### Production Build
 
 ```bash
 pnpm build
+pnpm preview
 ```
 
-## Testing
+---
 
-This project uses [Vitest](https://vitest.dev/) for testing. You can run the tests with:
+## Project Structure
+
+```
+.
+├── public/                       # Static assets
+│   ├── manifest.json             # PWA manifest
+│   └── robots.txt                # SEO robots file
+├── src/
+│   ├── components/               # Reusable UI components
+│   │   ├── navbar/               # Sidebar navigation
+│   │   ├── page-header/          # Page header with actions
+│   │   ├── portfolio-card/       # Content card component
+│   │   ├── modal-delete/         # Delete confirmation modal
+│   │   ├── render-form-field/    # Dynamic form field renderer
+│   │   │   ├── image-input/      # Image upload component
+│   │   │   └── rich-editor/      # Tiptap rich text editor
+│   │   └── storybook/            # Design system components
+│   ├── config/                   # App configuration
+│   │   └── keycloak.ts           # Keycloak client setup
+│   ├── constants/                # Application constants
+│   ├── helper/                   # Utility functions
+│   │   └── usePrivateRoute.ts    # Route protection hook
+│   ├── hooks/                    # Custom React hooks
+│   ├── integrations/             # Third-party integrations
+│   │   └── tanstack-query/       # Query client provider
+│   ├── lib/                      # Library configurations
+│   │   └── axios.ts              # Axios instance setup
+│   ├── pages/                    # Page components
+│   │   ├── NotFound.tsx          # 404 page
+│   │   └── portfolio/            # Portfolio pages
+│   ├── query/                    # TanStack Query hooks
+│   │   └── portfolio.ts          # Portfolio data queries
+│   ├── routes/                   # File-based route definitions
+│   │   ├── __root.tsx            # Root layout
+│   │   ├── _dashboardLayout.tsx  # Dashboard layout
+│   │   └── _dashboardLayout/     # Protected routes
+│   ├── services/                 # API service layer
+│   │   └── portfolio.ts          # Portfolio API calls
+│   ├── theme/                    # Mantine theme configuration
+│   ├── env.ts                    # Type-safe environment variables
+│   ├── router.tsx                # Router configuration
+│   └── styles.css                # Global styles
+├── biome.json                    # Biome configuration
+├── Dockerfile                    # Docker build configuration
+├── package.json                  # Project dependencies
+├── tsconfig.json                 # TypeScript configuration
+├── vite.config.ts                # Vite configuration
+└── README.md                     # This file
+```
+
+---
+
+## Development
+
+### Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server on port 3000 |
+| `pnpm build` | Build for production |
+| `pnpm preview` | Preview production build |
+| `pnpm test` | Run tests with Vitest |
+| `pnpm lint` | Lint code with Biome |
+| `pnpm format` | Format code with Biome |
+| `pnpm check` | Run lint and format checks |
+| `pnpm storybook` | Start Storybook on port 6006 |
+| `pnpm build-storybook` | Build Storybook for deployment |
+
+### Adding New Pages
+
+1. Create a route file in `src/routes/`
+2. Create a page component in `src/pages/`
+3. Add navigation link in `src/components/navbar/`
+
+### Adding New API Services
+
+1. Create service functions in `src/services/`
+2. Create TanStack Query hooks in `src/query/`
+3. Use the hooks in your page components
+
+---
+
+## Docker Deployment
+
+### Using Docker
+
+1. **Build the image**
+   ```bash
+   docker build -t cms-template .
+   ```
+
+2. **Run the container**
+   ```bash
+   docker run -d \
+     -p 3000:3000 \
+     --env-file .env \
+     --name cms-template \
+     cms-template
+   ```
+
+3. **View logs**
+   ```bash
+   docker logs -f cms-template
+   ```
+
+4. **Stop the container**
+   ```bash
+   docker stop cms-template
+   ```
+
+### Production Deployment
+
+For production deployment, consider:
+
+- Using a reverse proxy (Nginx, Traefik)
+- Setting up SSL/TLS certificates
+- Configuring proper CORS origins
+- Implementing rate limiting
+- Setting up monitoring and logging (e.g., Prometheus, Grafana)
+- Using environment-specific configuration
+- Implementing health check endpoints
+
+---
+
+## Authentication
+
+This application uses Keycloak for authentication with OpenID Connect (OIDC). Protected routes require users to be authenticated.
+
+### Setting Up Keycloak
+
+1. Create a new realm in Keycloak
+2. Create a client with the following settings:
+   - Client Protocol: `openid-connect`
+   - Access Type: `public`
+   - Valid Redirect URIs: `http://localhost:3000/*`
+   - Web Origins: `http://localhost:3000`
+3. Configure the environment variables with your Keycloak settings
+
+### Protected Routes
+
+Routes under `_dashboardLayout/` are protected and require authentication. The `usePrivateRoute` hook handles the authentication check and redirects unauthenticated users to the login page.
+
+---
+
+## Storybook
+
+Storybook provides component documentation and visual testing.
+
+### Running Storybook
 
 ```bash
-pnpm test
+pnpm storybook
 ```
 
-## Styling
+Storybook will be available at **http://localhost:6006**
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
-
-
-## Linting & Formatting
-
-This project uses [Biome](https://biomejs.dev/) for linting and formatting. The following scripts are available:
-
+### Building Storybook
 
 ```bash
-pnpm lint
-pnpm format
-pnpm check
+pnpm build-storybook
 ```
 
+The built Storybook will be in the `storybook-static/` directory.
 
-## T3Env
+---
 
-- You can use T3Env to add type safety to your environment variables.
-- Add Environment variables to the `src/env.mjs` file.
-- Use the environment variables in your code.
+## Author
 
-### Usage
-
-```ts
-import { env } from "@/env";
-
-console.log(env.VITE_APP_TITLE);
-```
-
-
-
-
-
-# TanStack Chat Application
-
-Am example chat application built with TanStack Start, TanStack Store, and Claude AI.
-
-## .env Updates
-
-```env
-ANTHROPIC_API_KEY=your_anthropic_api_key
-```
-
-## ✨ Features
-
-### AI Capabilities
-- 🤖 Powered by Claude 3.5 Sonnet 
-- 📝 Rich markdown formatting with syntax highlighting
-- 🎯 Customizable system prompts for tailored AI behavior
-- 🔄 Real-time message updates and streaming responses (coming soon)
-
-### User Experience
-- 🎨 Modern UI with Tailwind CSS and Lucide icons
-- 🔍 Conversation management and history
-- 🔐 Secure API key management
-- 📋 Markdown rendering with code highlighting
-
-### Technical Features
-- 📦 Centralized state management with TanStack Store
-- 🔌 Extensible architecture for multiple AI providers
-- 🛠️ TypeScript for type safety
-
-## Architecture
-
-### Tech Stack
-- **Frontend Framework**: TanStack Start
-- **Routing**: TanStack Router
-- **State Management**: TanStack Store
-- **Styling**: Tailwind CSS
-- **AI Integration**: Anthropic's Claude API
-
-
-## Routing
-This project uses [TanStack Router](https://tanstack.com/router). The initial setup is a file based router. Which means that the routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add another a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
-
-```tsx
-import { Link } from "@tanstack/react-router";
-```
-
-Then anywhere in your JSX you can use it like so:
-
-```tsx
-<Link to="/about">About</Link>
-```
-
-This will create a link that will navigate to the `/about` route.
-
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
-
-### Using A Layout
-
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you use the `<Outlet />` component.
-
-Here is an example layout that includes a header:
-
-```tsx
-import { Outlet, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-
-import { Link } from "@tanstack/react-router";
-
-export const Route = createRootRoute({
-  component: () => (
-    <>
-      <header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-        </nav>
-      </header>
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
-  ),
-})
-```
-
-The `<TanStackRouterDevtools />` component is not required so you can remove it if you don't want it in your layout.
-
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
-
-
-## Data Fetching
-
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
-
-For example:
-
-```tsx
-const peopleRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/people",
-  loader: async () => {
-    const response = await fetch("https://swapi.dev/api/people");
-    return response.json() as Promise<{
-      results: {
-        name: string;
-      }[];
-    }>;
-  },
-  component: () => {
-    const data = peopleRoute.useLoaderData();
-    return (
-      <ul>
-        {data.results.map((person) => (
-          <li key={person.name}>{person.name}</li>
-        ))}
-      </ul>
-    );
-  },
-});
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
-
-### React-Query
-
-React-Query is an excellent addition or alternative to route loading and integrating it into you application is a breeze.
-
-First add your dependencies:
-
-```bash
-pnpm add @tanstack/react-query @tanstack/react-query-devtools
-```
-
-Next we'll need to create a query client and provider. We recommend putting those in `main.tsx`.
-
-```tsx
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-// ...
-
-const queryClient = new QueryClient();
-
-// ...
-
-if (!rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement);
-
-  root.render(
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  );
-}
-```
-
-You can also add TanStack Query Devtools to the root route (optional).
-
-```tsx
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
-const rootRoute = createRootRoute({
-  component: () => (
-    <>
-      <Outlet />
-      <ReactQueryDevtools buttonPosition="top-right" />
-      <TanStackRouterDevtools />
-    </>
-  ),
-});
-```
-
-Now you can use `useQuery` to fetch your data.
-
-```tsx
-import { useQuery } from "@tanstack/react-query";
-
-import "./App.css";
-
-function App() {
-  const { data } = useQuery({
-    queryKey: ["people"],
-    queryFn: () =>
-      fetch("https://swapi.dev/api/people")
-        .then((res) => res.json())
-        .then((data) => data.results as { name: string }[]),
-    initialData: [],
-  });
-
-  return (
-    <div>
-      <ul>
-        {data.map((person) => (
-          <li key={person.name}>{person.name}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-export default App;
-```
-
-You can find out everything you need to know on how to use React-Query in the [React-Query documentation](https://tanstack.com/query/latest/docs/framework/react/overview).
-
-## State Management
-
-Another common requirement for React applications is state management. There are many options for state management in React. TanStack Store provides a great starting point for your project.
-
-First you need to add TanStack Store as a dependency:
-
-```bash
-pnpm add @tanstack/store
-```
-
-Now let's create a simple counter in the `src/App.tsx` file as a demonstration.
-
-```tsx
-import { useStore } from "@tanstack/react-store";
-import { Store } from "@tanstack/store";
-import "./App.css";
-
-const countStore = new Store(0);
-
-function App() {
-  const count = useStore(countStore);
-  return (
-    <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
-    </div>
-  );
-}
-
-export default App;
-```
-
-One of the many nice features of TanStack Store is the ability to derive state from other state. That derived state will update when the base state updates.
-
-Let's check this out by doubling the count using derived state.
-
-```tsx
-import { useStore } from "@tanstack/react-store";
-import { Store, Derived } from "@tanstack/store";
-import "./App.css";
-
-const countStore = new Store(0);
-
-const doubledStore = new Derived({
-  fn: () => countStore.state * 2,
-  deps: [countStore],
-});
-doubledStore.mount();
-
-function App() {
-  const count = useStore(countStore);
-  const doubledCount = useStore(doubledStore);
-
-  return (
-    <div>
-      <button onClick={() => countStore.setState((n) => n + 1)}>
-        Increment - {count}
-      </button>
-      <div>Doubled - {doubledCount}</div>
-    </div>
-  );
-}
-
-export default App;
-```
-
-We use the `Derived` class to create a new store that is derived from another store. The `Derived` class has a `mount` method that will start the derived store updating.
-
-Once we've created the derived store we can use it in the `App` component just like we would any other store using the `useStore` hook.
-
-You can find out everything you need to know on how to use TanStack Store in the [TanStack Store documentation](https://tanstack.com/store/latest).
-
-# Demo files
-
-Files prefixed with `demo` can be safely deleted. They are there to provide a starting point for you to play around with the features you've installed.
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
+- [**Seanard K**](https://github.com/SeanardK)

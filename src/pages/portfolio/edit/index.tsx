@@ -159,7 +159,11 @@ function PagePortfolioEdit({ initialData }: { initialData?: any }) {
 							checked={redirect}
 							onChange={(event) => setRedirect(event.currentTarget.checked)}
 						/>
-						<Button type="button" variant="outline">
+						<Button
+							type="button"
+							variant="outline"
+							onClick={() => navigate({ to: "/portfolio" })}
+						>
 							Cancel
 						</Button>
 						<Button type="submit" loading={updateMutation.isPending}>
