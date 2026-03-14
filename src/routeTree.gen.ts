@@ -13,26 +13,8 @@ import { Route as DashboardLayoutRouteImport } from './routes/_dashboardLayout'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
 import { Route as DashboardLayoutPortfolioIndexRouteImport } from './routes/_dashboardLayout/portfolio/index'
-import { Route as TutorialDemoTanstackQueryRouteImport } from './routes/tutorial/demo/tanstack-query'
-import { Route as TutorialDemoTanchatRouteImport } from './routes/tutorial/demo/tanchat'
-import { Route as TutorialDemoTableRouteImport } from './routes/tutorial/demo/table'
-import { Route as TutorialDemoStorybookRouteImport } from './routes/tutorial/demo/storybook'
-import { Route as TutorialDemoStoreRouteImport } from './routes/tutorial/demo/store'
-import { Route as TutorialExampleGuitarsIndexRouteImport } from './routes/tutorial/example.guitars/index'
 import { Route as DashboardLayoutPortfolioAddIndexRouteImport } from './routes/_dashboardLayout/portfolio/add/index'
-import { Route as TutorialExampleGuitarsGuitarIdRouteImport } from './routes/tutorial/example.guitars/$guitarId'
-import { Route as TutorialDemoStartServerFuncsRouteImport } from './routes/tutorial/demo/start.server-funcs'
-import { Route as TutorialDemoStartApiRequestRouteImport } from './routes/tutorial/demo/start.api-request'
-import { Route as TutorialDemoFormSimpleRouteImport } from './routes/tutorial/demo/form.simple'
-import { Route as TutorialDemoFormAddressRouteImport } from './routes/tutorial/demo/form.address'
-import { Route as TutorialDemoApiTqTodosRouteImport } from './routes/tutorial/demo/api.tq-todos'
-import { Route as TutorialDemoApiTanchatRouteImport } from './routes/tutorial/demo/api.tanchat'
-import { Route as TutorialDemoApiNamesRouteImport } from './routes/tutorial/demo/api.names'
 import { Route as DashboardLayoutPortfolioEditIdRouteImport } from './routes/_dashboardLayout/portfolio/edit/$id'
-import { Route as TutorialDemoStartSsrIndexRouteImport } from './routes/tutorial/demo/start.ssr.index'
-import { Route as TutorialDemoStartSsrSpaModeRouteImport } from './routes/tutorial/demo/start.ssr.spa-mode'
-import { Route as TutorialDemoStartSsrFullSsrRouteImport } from './routes/tutorial/demo/start.ssr.full-ssr'
-import { Route as TutorialDemoStartSsrDataOnlyRouteImport } from './routes/tutorial/demo/start.ssr.data-only'
 
 const DashboardLayoutRoute = DashboardLayoutRouteImport.update({
   id: '/_dashboardLayout',
@@ -54,296 +36,66 @@ const DashboardLayoutPortfolioIndexRoute =
     path: '/portfolio/',
     getParentRoute: () => DashboardLayoutRoute,
   } as any)
-const TutorialDemoTanstackQueryRoute =
-  TutorialDemoTanstackQueryRouteImport.update({
-    id: '/tutorial/demo/tanstack-query',
-    path: '/tutorial/demo/tanstack-query',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const TutorialDemoTanchatRoute = TutorialDemoTanchatRouteImport.update({
-  id: '/tutorial/demo/tanchat',
-  path: '/tutorial/demo/tanchat',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TutorialDemoTableRoute = TutorialDemoTableRouteImport.update({
-  id: '/tutorial/demo/table',
-  path: '/tutorial/demo/table',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TutorialDemoStorybookRoute = TutorialDemoStorybookRouteImport.update({
-  id: '/tutorial/demo/storybook',
-  path: '/tutorial/demo/storybook',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TutorialDemoStoreRoute = TutorialDemoStoreRouteImport.update({
-  id: '/tutorial/demo/store',
-  path: '/tutorial/demo/store',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TutorialExampleGuitarsIndexRoute =
-  TutorialExampleGuitarsIndexRouteImport.update({
-    id: '/tutorial/example/guitars/',
-    path: '/tutorial/example/guitars/',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const DashboardLayoutPortfolioAddIndexRoute =
   DashboardLayoutPortfolioAddIndexRouteImport.update({
     id: '/portfolio/add/',
     path: '/portfolio/add/',
     getParentRoute: () => DashboardLayoutRoute,
   } as any)
-const TutorialExampleGuitarsGuitarIdRoute =
-  TutorialExampleGuitarsGuitarIdRouteImport.update({
-    id: '/tutorial/example/guitars/$guitarId',
-    path: '/tutorial/example/guitars/$guitarId',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const TutorialDemoStartServerFuncsRoute =
-  TutorialDemoStartServerFuncsRouteImport.update({
-    id: '/tutorial/demo/start/server-funcs',
-    path: '/tutorial/demo/start/server-funcs',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const TutorialDemoStartApiRequestRoute =
-  TutorialDemoStartApiRequestRouteImport.update({
-    id: '/tutorial/demo/start/api-request',
-    path: '/tutorial/demo/start/api-request',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const TutorialDemoFormSimpleRoute = TutorialDemoFormSimpleRouteImport.update({
-  id: '/tutorial/demo/form/simple',
-  path: '/tutorial/demo/form/simple',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TutorialDemoFormAddressRoute = TutorialDemoFormAddressRouteImport.update({
-  id: '/tutorial/demo/form/address',
-  path: '/tutorial/demo/form/address',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TutorialDemoApiTqTodosRoute = TutorialDemoApiTqTodosRouteImport.update({
-  id: '/tutorial/demo/api/tq-todos',
-  path: '/tutorial/demo/api/tq-todos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TutorialDemoApiTanchatRoute = TutorialDemoApiTanchatRouteImport.update({
-  id: '/tutorial/demo/api/tanchat',
-  path: '/tutorial/demo/api/tanchat',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TutorialDemoApiNamesRoute = TutorialDemoApiNamesRouteImport.update({
-  id: '/tutorial/demo/api/names',
-  path: '/tutorial/demo/api/names',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DashboardLayoutPortfolioEditIdRoute =
   DashboardLayoutPortfolioEditIdRouteImport.update({
     id: '/portfolio/edit/$id',
     path: '/portfolio/edit/$id',
     getParentRoute: () => DashboardLayoutRoute,
   } as any)
-const TutorialDemoStartSsrIndexRoute =
-  TutorialDemoStartSsrIndexRouteImport.update({
-    id: '/tutorial/demo/start/ssr/',
-    path: '/tutorial/demo/start/ssr/',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const TutorialDemoStartSsrSpaModeRoute =
-  TutorialDemoStartSsrSpaModeRouteImport.update({
-    id: '/tutorial/demo/start/ssr/spa-mode',
-    path: '/tutorial/demo/start/ssr/spa-mode',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const TutorialDemoStartSsrFullSsrRoute =
-  TutorialDemoStartSsrFullSsrRouteImport.update({
-    id: '/tutorial/demo/start/ssr/full-ssr',
-    path: '/tutorial/demo/start/ssr/full-ssr',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const TutorialDemoStartSsrDataOnlyRoute =
-  TutorialDemoStartSsrDataOnlyRouteImport.update({
-    id: '/tutorial/demo/start/ssr/data-only',
-    path: '/tutorial/demo/start/ssr/data-only',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/login': typeof LoginIndexRoute
-  '/tutorial/demo/store': typeof TutorialDemoStoreRoute
-  '/tutorial/demo/storybook': typeof TutorialDemoStorybookRoute
-  '/tutorial/demo/table': typeof TutorialDemoTableRoute
-  '/tutorial/demo/tanchat': typeof TutorialDemoTanchatRoute
-  '/tutorial/demo/tanstack-query': typeof TutorialDemoTanstackQueryRoute
   '/portfolio': typeof DashboardLayoutPortfolioIndexRoute
   '/portfolio/edit/$id': typeof DashboardLayoutPortfolioEditIdRoute
-  '/tutorial/demo/api/names': typeof TutorialDemoApiNamesRoute
-  '/tutorial/demo/api/tanchat': typeof TutorialDemoApiTanchatRoute
-  '/tutorial/demo/api/tq-todos': typeof TutorialDemoApiTqTodosRoute
-  '/tutorial/demo/form/address': typeof TutorialDemoFormAddressRoute
-  '/tutorial/demo/form/simple': typeof TutorialDemoFormSimpleRoute
-  '/tutorial/demo/start/api-request': typeof TutorialDemoStartApiRequestRoute
-  '/tutorial/demo/start/server-funcs': typeof TutorialDemoStartServerFuncsRoute
-  '/tutorial/example/guitars/$guitarId': typeof TutorialExampleGuitarsGuitarIdRoute
   '/portfolio/add': typeof DashboardLayoutPortfolioAddIndexRoute
-  '/tutorial/example/guitars': typeof TutorialExampleGuitarsIndexRoute
-  '/tutorial/demo/start/ssr/data-only': typeof TutorialDemoStartSsrDataOnlyRoute
-  '/tutorial/demo/start/ssr/full-ssr': typeof TutorialDemoStartSsrFullSsrRoute
-  '/tutorial/demo/start/ssr/spa-mode': typeof TutorialDemoStartSsrSpaModeRoute
-  '/tutorial/demo/start/ssr': typeof TutorialDemoStartSsrIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof LoginIndexRoute
-  '/tutorial/demo/store': typeof TutorialDemoStoreRoute
-  '/tutorial/demo/storybook': typeof TutorialDemoStorybookRoute
-  '/tutorial/demo/table': typeof TutorialDemoTableRoute
-  '/tutorial/demo/tanchat': typeof TutorialDemoTanchatRoute
-  '/tutorial/demo/tanstack-query': typeof TutorialDemoTanstackQueryRoute
   '/portfolio': typeof DashboardLayoutPortfolioIndexRoute
   '/portfolio/edit/$id': typeof DashboardLayoutPortfolioEditIdRoute
-  '/tutorial/demo/api/names': typeof TutorialDemoApiNamesRoute
-  '/tutorial/demo/api/tanchat': typeof TutorialDemoApiTanchatRoute
-  '/tutorial/demo/api/tq-todos': typeof TutorialDemoApiTqTodosRoute
-  '/tutorial/demo/form/address': typeof TutorialDemoFormAddressRoute
-  '/tutorial/demo/form/simple': typeof TutorialDemoFormSimpleRoute
-  '/tutorial/demo/start/api-request': typeof TutorialDemoStartApiRequestRoute
-  '/tutorial/demo/start/server-funcs': typeof TutorialDemoStartServerFuncsRoute
-  '/tutorial/example/guitars/$guitarId': typeof TutorialExampleGuitarsGuitarIdRoute
   '/portfolio/add': typeof DashboardLayoutPortfolioAddIndexRoute
-  '/tutorial/example/guitars': typeof TutorialExampleGuitarsIndexRoute
-  '/tutorial/demo/start/ssr/data-only': typeof TutorialDemoStartSsrDataOnlyRoute
-  '/tutorial/demo/start/ssr/full-ssr': typeof TutorialDemoStartSsrFullSsrRoute
-  '/tutorial/demo/start/ssr/spa-mode': typeof TutorialDemoStartSsrSpaModeRoute
-  '/tutorial/demo/start/ssr': typeof TutorialDemoStartSsrIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_dashboardLayout': typeof DashboardLayoutRouteWithChildren
   '/login/': typeof LoginIndexRoute
-  '/tutorial/demo/store': typeof TutorialDemoStoreRoute
-  '/tutorial/demo/storybook': typeof TutorialDemoStorybookRoute
-  '/tutorial/demo/table': typeof TutorialDemoTableRoute
-  '/tutorial/demo/tanchat': typeof TutorialDemoTanchatRoute
-  '/tutorial/demo/tanstack-query': typeof TutorialDemoTanstackQueryRoute
   '/_dashboardLayout/portfolio/': typeof DashboardLayoutPortfolioIndexRoute
   '/_dashboardLayout/portfolio/edit/$id': typeof DashboardLayoutPortfolioEditIdRoute
-  '/tutorial/demo/api/names': typeof TutorialDemoApiNamesRoute
-  '/tutorial/demo/api/tanchat': typeof TutorialDemoApiTanchatRoute
-  '/tutorial/demo/api/tq-todos': typeof TutorialDemoApiTqTodosRoute
-  '/tutorial/demo/form/address': typeof TutorialDemoFormAddressRoute
-  '/tutorial/demo/form/simple': typeof TutorialDemoFormSimpleRoute
-  '/tutorial/demo/start/api-request': typeof TutorialDemoStartApiRequestRoute
-  '/tutorial/demo/start/server-funcs': typeof TutorialDemoStartServerFuncsRoute
-  '/tutorial/example/guitars/$guitarId': typeof TutorialExampleGuitarsGuitarIdRoute
   '/_dashboardLayout/portfolio/add/': typeof DashboardLayoutPortfolioAddIndexRoute
-  '/tutorial/example/guitars/': typeof TutorialExampleGuitarsIndexRoute
-  '/tutorial/demo/start/ssr/data-only': typeof TutorialDemoStartSsrDataOnlyRoute
-  '/tutorial/demo/start/ssr/full-ssr': typeof TutorialDemoStartSsrFullSsrRoute
-  '/tutorial/demo/start/ssr/spa-mode': typeof TutorialDemoStartSsrSpaModeRoute
-  '/tutorial/demo/start/ssr/': typeof TutorialDemoStartSsrIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/login'
-    | '/tutorial/demo/store'
-    | '/tutorial/demo/storybook'
-    | '/tutorial/demo/table'
-    | '/tutorial/demo/tanchat'
-    | '/tutorial/demo/tanstack-query'
     | '/portfolio'
     | '/portfolio/edit/$id'
-    | '/tutorial/demo/api/names'
-    | '/tutorial/demo/api/tanchat'
-    | '/tutorial/demo/api/tq-todos'
-    | '/tutorial/demo/form/address'
-    | '/tutorial/demo/form/simple'
-    | '/tutorial/demo/start/api-request'
-    | '/tutorial/demo/start/server-funcs'
-    | '/tutorial/example/guitars/$guitarId'
     | '/portfolio/add'
-    | '/tutorial/example/guitars'
-    | '/tutorial/demo/start/ssr/data-only'
-    | '/tutorial/demo/start/ssr/full-ssr'
-    | '/tutorial/demo/start/ssr/spa-mode'
-    | '/tutorial/demo/start/ssr'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/login'
-    | '/tutorial/demo/store'
-    | '/tutorial/demo/storybook'
-    | '/tutorial/demo/table'
-    | '/tutorial/demo/tanchat'
-    | '/tutorial/demo/tanstack-query'
-    | '/portfolio'
-    | '/portfolio/edit/$id'
-    | '/tutorial/demo/api/names'
-    | '/tutorial/demo/api/tanchat'
-    | '/tutorial/demo/api/tq-todos'
-    | '/tutorial/demo/form/address'
-    | '/tutorial/demo/form/simple'
-    | '/tutorial/demo/start/api-request'
-    | '/tutorial/demo/start/server-funcs'
-    | '/tutorial/example/guitars/$guitarId'
-    | '/portfolio/add'
-    | '/tutorial/example/guitars'
-    | '/tutorial/demo/start/ssr/data-only'
-    | '/tutorial/demo/start/ssr/full-ssr'
-    | '/tutorial/demo/start/ssr/spa-mode'
-    | '/tutorial/demo/start/ssr'
+  to: '/' | '/login' | '/portfolio' | '/portfolio/edit/$id' | '/portfolio/add'
   id:
     | '__root__'
     | '/'
     | '/_dashboardLayout'
     | '/login/'
-    | '/tutorial/demo/store'
-    | '/tutorial/demo/storybook'
-    | '/tutorial/demo/table'
-    | '/tutorial/demo/tanchat'
-    | '/tutorial/demo/tanstack-query'
     | '/_dashboardLayout/portfolio/'
     | '/_dashboardLayout/portfolio/edit/$id'
-    | '/tutorial/demo/api/names'
-    | '/tutorial/demo/api/tanchat'
-    | '/tutorial/demo/api/tq-todos'
-    | '/tutorial/demo/form/address'
-    | '/tutorial/demo/form/simple'
-    | '/tutorial/demo/start/api-request'
-    | '/tutorial/demo/start/server-funcs'
-    | '/tutorial/example/guitars/$guitarId'
     | '/_dashboardLayout/portfolio/add/'
-    | '/tutorial/example/guitars/'
-    | '/tutorial/demo/start/ssr/data-only'
-    | '/tutorial/demo/start/ssr/full-ssr'
-    | '/tutorial/demo/start/ssr/spa-mode'
-    | '/tutorial/demo/start/ssr/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardLayoutRoute: typeof DashboardLayoutRouteWithChildren
   LoginIndexRoute: typeof LoginIndexRoute
-  TutorialDemoStoreRoute: typeof TutorialDemoStoreRoute
-  TutorialDemoStorybookRoute: typeof TutorialDemoStorybookRoute
-  TutorialDemoTableRoute: typeof TutorialDemoTableRoute
-  TutorialDemoTanchatRoute: typeof TutorialDemoTanchatRoute
-  TutorialDemoTanstackQueryRoute: typeof TutorialDemoTanstackQueryRoute
-  TutorialDemoApiNamesRoute: typeof TutorialDemoApiNamesRoute
-  TutorialDemoApiTanchatRoute: typeof TutorialDemoApiTanchatRoute
-  TutorialDemoApiTqTodosRoute: typeof TutorialDemoApiTqTodosRoute
-  TutorialDemoFormAddressRoute: typeof TutorialDemoFormAddressRoute
-  TutorialDemoFormSimpleRoute: typeof TutorialDemoFormSimpleRoute
-  TutorialDemoStartApiRequestRoute: typeof TutorialDemoStartApiRequestRoute
-  TutorialDemoStartServerFuncsRoute: typeof TutorialDemoStartServerFuncsRoute
-  TutorialExampleGuitarsGuitarIdRoute: typeof TutorialExampleGuitarsGuitarIdRoute
-  TutorialExampleGuitarsIndexRoute: typeof TutorialExampleGuitarsIndexRoute
-  TutorialDemoStartSsrDataOnlyRoute: typeof TutorialDemoStartSsrDataOnlyRoute
-  TutorialDemoStartSsrFullSsrRoute: typeof TutorialDemoStartSsrFullSsrRoute
-  TutorialDemoStartSsrSpaModeRoute: typeof TutorialDemoStartSsrSpaModeRoute
-  TutorialDemoStartSsrIndexRoute: typeof TutorialDemoStartSsrIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -376,48 +128,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardLayoutPortfolioIndexRouteImport
       parentRoute: typeof DashboardLayoutRoute
     }
-    '/tutorial/demo/tanstack-query': {
-      id: '/tutorial/demo/tanstack-query'
-      path: '/tutorial/demo/tanstack-query'
-      fullPath: '/tutorial/demo/tanstack-query'
-      preLoaderRoute: typeof TutorialDemoTanstackQueryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/tanchat': {
-      id: '/tutorial/demo/tanchat'
-      path: '/tutorial/demo/tanchat'
-      fullPath: '/tutorial/demo/tanchat'
-      preLoaderRoute: typeof TutorialDemoTanchatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/table': {
-      id: '/tutorial/demo/table'
-      path: '/tutorial/demo/table'
-      fullPath: '/tutorial/demo/table'
-      preLoaderRoute: typeof TutorialDemoTableRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/storybook': {
-      id: '/tutorial/demo/storybook'
-      path: '/tutorial/demo/storybook'
-      fullPath: '/tutorial/demo/storybook'
-      preLoaderRoute: typeof TutorialDemoStorybookRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/store': {
-      id: '/tutorial/demo/store'
-      path: '/tutorial/demo/store'
-      fullPath: '/tutorial/demo/store'
-      preLoaderRoute: typeof TutorialDemoStoreRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/example/guitars/': {
-      id: '/tutorial/example/guitars/'
-      path: '/tutorial/example/guitars'
-      fullPath: '/tutorial/example/guitars'
-      preLoaderRoute: typeof TutorialExampleGuitarsIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_dashboardLayout/portfolio/add/': {
       id: '/_dashboardLayout/portfolio/add/'
       path: '/portfolio/add'
@@ -425,96 +135,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardLayoutPortfolioAddIndexRouteImport
       parentRoute: typeof DashboardLayoutRoute
     }
-    '/tutorial/example/guitars/$guitarId': {
-      id: '/tutorial/example/guitars/$guitarId'
-      path: '/tutorial/example/guitars/$guitarId'
-      fullPath: '/tutorial/example/guitars/$guitarId'
-      preLoaderRoute: typeof TutorialExampleGuitarsGuitarIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/start/server-funcs': {
-      id: '/tutorial/demo/start/server-funcs'
-      path: '/tutorial/demo/start/server-funcs'
-      fullPath: '/tutorial/demo/start/server-funcs'
-      preLoaderRoute: typeof TutorialDemoStartServerFuncsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/start/api-request': {
-      id: '/tutorial/demo/start/api-request'
-      path: '/tutorial/demo/start/api-request'
-      fullPath: '/tutorial/demo/start/api-request'
-      preLoaderRoute: typeof TutorialDemoStartApiRequestRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/form/simple': {
-      id: '/tutorial/demo/form/simple'
-      path: '/tutorial/demo/form/simple'
-      fullPath: '/tutorial/demo/form/simple'
-      preLoaderRoute: typeof TutorialDemoFormSimpleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/form/address': {
-      id: '/tutorial/demo/form/address'
-      path: '/tutorial/demo/form/address'
-      fullPath: '/tutorial/demo/form/address'
-      preLoaderRoute: typeof TutorialDemoFormAddressRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/api/tq-todos': {
-      id: '/tutorial/demo/api/tq-todos'
-      path: '/tutorial/demo/api/tq-todos'
-      fullPath: '/tutorial/demo/api/tq-todos'
-      preLoaderRoute: typeof TutorialDemoApiTqTodosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/api/tanchat': {
-      id: '/tutorial/demo/api/tanchat'
-      path: '/tutorial/demo/api/tanchat'
-      fullPath: '/tutorial/demo/api/tanchat'
-      preLoaderRoute: typeof TutorialDemoApiTanchatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/api/names': {
-      id: '/tutorial/demo/api/names'
-      path: '/tutorial/demo/api/names'
-      fullPath: '/tutorial/demo/api/names'
-      preLoaderRoute: typeof TutorialDemoApiNamesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_dashboardLayout/portfolio/edit/$id': {
       id: '/_dashboardLayout/portfolio/edit/$id'
       path: '/portfolio/edit/$id'
       fullPath: '/portfolio/edit/$id'
       preLoaderRoute: typeof DashboardLayoutPortfolioEditIdRouteImport
       parentRoute: typeof DashboardLayoutRoute
-    }
-    '/tutorial/demo/start/ssr/': {
-      id: '/tutorial/demo/start/ssr/'
-      path: '/tutorial/demo/start/ssr'
-      fullPath: '/tutorial/demo/start/ssr'
-      preLoaderRoute: typeof TutorialDemoStartSsrIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/start/ssr/spa-mode': {
-      id: '/tutorial/demo/start/ssr/spa-mode'
-      path: '/tutorial/demo/start/ssr/spa-mode'
-      fullPath: '/tutorial/demo/start/ssr/spa-mode'
-      preLoaderRoute: typeof TutorialDemoStartSsrSpaModeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/start/ssr/full-ssr': {
-      id: '/tutorial/demo/start/ssr/full-ssr'
-      path: '/tutorial/demo/start/ssr/full-ssr'
-      fullPath: '/tutorial/demo/start/ssr/full-ssr'
-      preLoaderRoute: typeof TutorialDemoStartSsrFullSsrRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/tutorial/demo/start/ssr/data-only': {
-      id: '/tutorial/demo/start/ssr/data-only'
-      path: '/tutorial/demo/start/ssr/data-only'
-      fullPath: '/tutorial/demo/start/ssr/data-only'
-      preLoaderRoute: typeof TutorialDemoStartSsrDataOnlyRouteImport
-      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -539,24 +165,6 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardLayoutRoute: DashboardLayoutRouteWithChildren,
   LoginIndexRoute: LoginIndexRoute,
-  TutorialDemoStoreRoute: TutorialDemoStoreRoute,
-  TutorialDemoStorybookRoute: TutorialDemoStorybookRoute,
-  TutorialDemoTableRoute: TutorialDemoTableRoute,
-  TutorialDemoTanchatRoute: TutorialDemoTanchatRoute,
-  TutorialDemoTanstackQueryRoute: TutorialDemoTanstackQueryRoute,
-  TutorialDemoApiNamesRoute: TutorialDemoApiNamesRoute,
-  TutorialDemoApiTanchatRoute: TutorialDemoApiTanchatRoute,
-  TutorialDemoApiTqTodosRoute: TutorialDemoApiTqTodosRoute,
-  TutorialDemoFormAddressRoute: TutorialDemoFormAddressRoute,
-  TutorialDemoFormSimpleRoute: TutorialDemoFormSimpleRoute,
-  TutorialDemoStartApiRequestRoute: TutorialDemoStartApiRequestRoute,
-  TutorialDemoStartServerFuncsRoute: TutorialDemoStartServerFuncsRoute,
-  TutorialExampleGuitarsGuitarIdRoute: TutorialExampleGuitarsGuitarIdRoute,
-  TutorialExampleGuitarsIndexRoute: TutorialExampleGuitarsIndexRoute,
-  TutorialDemoStartSsrDataOnlyRoute: TutorialDemoStartSsrDataOnlyRoute,
-  TutorialDemoStartSsrFullSsrRoute: TutorialDemoStartSsrFullSsrRoute,
-  TutorialDemoStartSsrSpaModeRoute: TutorialDemoStartSsrSpaModeRoute,
-  TutorialDemoStartSsrIndexRoute: TutorialDemoStartSsrIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
